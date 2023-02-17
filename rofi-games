@@ -1,0 +1,95 @@
+#!/bin/bash
+
+menu(){
+	printf "1. Minecraft\n"
+	printf "2. Playonlinux\n"
+	printf "3. Counter Strike 1.6\n"
+	printf "4. Counter Strike Source\n"
+	printf "5. Breakout-Game\n"
+	printf "6. Finalshot\n"
+	printf "7. Friday Night Funkin\n"
+	printf "8. Karlson\n"
+	printf "9. Ultrakill\n"
+	printf "10. RERUN\n"
+	printf "11. Starcatcher\n"
+	printf "12. Six Cats Under\n"
+	printf "13. Raft\n"
+	printf "14. Modern BowlFare\n"
+	printf "15. GTA SA\n"
+	printf "16. Project64\n"
+	printf "17. WebApps\n"
+}
+
+main(){
+    choice=$(menu | rofi -dmenu -i -selected-row 1 -p "Games:"| cut -d. -f1 )
+
+	case $choice in
+		1)
+			cd Downloads && TL_mcl.jar
+	    ;;	
+		2)
+			playonlinux
+	    ;;
+
+		4)
+			cd Downloads/counter\ strike\ source/ && gamemoderun wine Counter-Strike\ Source.exe
+	    ;;
+
+		3)
+			cd $HOME/.PlayOnLinux/wineprefix/1.6/drive_c/Games/Counter-strike\ 1.6\ Original/ && gamemoderun wine hl.exe hl.exe -steam -game cstrike -appid 10 -noipx -nojoy -noforcemspd -noforcemparms -noforcemaccel
+            ;;
+		5)
+			cd Breakout-Game && gamemoderun python3 main.py
+            ;;
+
+		6)	cd Downloads/Final\ Shot\ Linux\ 1.2.2/Linux/ && gamemoderun ./FinalShot.x86_64
+	    ;;
+
+		7)	cd Downloads/funkin-linux-64bit/ && gamemoderun ./Funkin
+	    ;;
+
+		8)
+			cd Downloads/Karlson_Linux/ && gamemoderun ./Karlson_linux.x86_64
+	    ;;
+
+		9)
+			cd Downloads/ULTRAKILL\ Prelude\ v104c\ Linux/ && gamemoderun ./Linux\ Test\ Build.x86_64
+  	    ;;
+
+		10)
+			cd Downloads/RERUN_linux/ && gamemoderun ./RERUN_linux.x86_64
+	    ;;
+
+		11)
+			cd Downloads/starcatcher-linux64/ && gamemoderun ./starcatcher.x86_64
+	    ;;
+
+		12)
+			cd Downloads/Six\ Cats\ Under\ -\ Linux/ && gamemoderun ./Six_Cats_Under.x86_64
+	    ;;
+
+		13)
+			cd Downloads/V1.04_Raft_LinuxUniversal/ && gamemoderun ./V1.04_Raft_LinuxUniversal.x86_64
+	    ;;
+
+		14)
+			cd Downloads/Modern\ Bowlfare\ -\ LD41-\ lin-\ b5/ && gamemoderun ./Modern\ Bowlfare\ -\ LD41-\ lin-\ b5.x86_64
+	    ;;
+
+	    15)
+			killall compton && cd Games/GTA-SanAndreas/ && gamemoderun wine gta_sa.exe && cd && compton --config .config/compton/compton.conf 
+		;;
+
+	16)
+		/usr/share/playonlinux/playonlinux --run "Project64"
+		;;
+
+	17)
+		/home/seni/Downloads/WebCatalog-45.0.0.AppImage
+		;;
+		esac
+
+}
+
+main
+
